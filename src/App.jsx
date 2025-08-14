@@ -11,15 +11,27 @@ const App = () => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-     const endpoint = search
-      ? `https://newsapi.org/v2/everything?q=${encodeURIComponent(search)}&sortBy=publishedAt&apiKey=257d89f00edc4f0aa72eedac90042f0a`
-      : `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=257d89f00edc4f0aa72eedac90042f0a`;
+  const endpoint = search
+    ? `https://newsapi.org/v2/everything?q=${encodeURIComponent(search)}&sortBy=publishedAt&apiKey=257d89f00edc4f0aa72eedac90042f0a`
+    : `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=257d89f00edc4f0aa72eedac90042f0a`;
 
-
-    fetch(endpoint)
-      .then(res => res.json())
-      .then(data => setNews(data.articles));
-  }, [category,search]);
+  fetch(endpoint)
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      if (data.articles) {
+        setNews(data.articles);
+      } else {
+        setNews([]); 
+      }
+    })
+    .catch(err => {
+      console.error("Failed to fetch news:", err);
+      setNews([]); 
+    });
+}, [category, search]);
 
   return (
     <div>
