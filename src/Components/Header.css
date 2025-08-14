@@ -1,0 +1,30 @@
+.header{
+    margin-top: 60px ;
+}
+.categories{
+    display: flex;
+    gap: 35px;
+    align-items: center;
+    justify-content: center;
+}
+.categories button{
+    height: 30px;
+    width: 140px;
+    border-radius: 5px;
+    background-color: #0268dd;
+    color: white;
+    border: none;
+    cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.categories .trending{
+    background-color: #f63e3e;
+}
+
+
+
+.categories button.active {
+  background-color: #f44242;
+  color: white;
+  transform: scale(1.05);
+}
