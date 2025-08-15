@@ -7,7 +7,7 @@ const Card = ({news}) => {
         {news.map((article,index)=>(
             
             <div className="card" key={index}>
-                <img src={article.urlToImage} alt={article.title} />
+                <img src={article.image} alt={article.title} />
                 <div className="card-content">
                     <h2>{article.title}</h2>
                     <p className="author">{article.author ? `By ${article.author}` : "Unknown Author"}</p>
