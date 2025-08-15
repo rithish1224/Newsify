@@ -1,6 +1,6 @@
 .card-container{
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 70px;
     padding: 20px;
     margin: 50px 80px 0px 80px;
